@@ -1,0 +1,66 @@
+{
+    "editor.minimap.enabled": true,
+	"editor.fontFamily": "consolas",
+    //"editor.fontWeight": "bold",
+	"editor.fontSize": 15,
+    "editor.rulers": [80, 120],
+    "workbench.colorCustomizations": {
+        //"tab.activeBackground": "#222",
+        //"editorCursor.foreground": "#FA0"
+        //"editor.selectionBackground": "#555"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+    "workbench.statusBar.visible": true,    
+    
+    "C_Cpp.intelliSenseEngine": "Default",
+
+    // terminal
+    "terminal.integrated.fontFamily": "Powerline Consolas",
+    "terminal.integrated.fontSize": 14,
+    
+    // debugger
+    // "debug.inlineValues": true,
+
+    "files.exclude": {
+        "**/.*": true,
+        "**/*.o": true
+    },
+
+	// Python
+    "python.pythonPath": "/Users/oizmerly/dev/splunk/core/bin/splcore/bin/python",
+    "python.autoComplete.extraPaths": [
+        "/Users/oizmerly/dev/splunk/core/bin/splcore/lib/python2.7/site-packages"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--max-line-length=120"
+    ],
+    "files.insertFinalNewline": true,
+    "editor.roundedSelection": false,
+    "explorer.openEditors.visible": 0,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        ".vscode": true,
+        "**/__pycache__": true,
+        "**/**/*.pyc": true,
+        ".test_*": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.activityBar.visible": false,
+    "window.zoomLevel": 0,
+    "cSpell.userWords": [
+        "hypercalls",
+        "installable",
+        "passthrough",
+        "splunk",
+        "unvetted",
+        "xenblanket"
+    ],
+    "material-icon-theme.showUpdateMessage": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Kary － Light",
+    "typescript.check.npmIsInstalled": false
+}
