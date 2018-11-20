@@ -1,0 +1,4 @@
+# touchpad
+
+sudo modprobe psmouse
+sudo modprobe psmouse
