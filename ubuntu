@@ -2,3 +2,4 @@
 
 sudo modprobe psmouse
 sudo modprobe psmouse
+xrandr --output DP-2 --brightness 0.9
