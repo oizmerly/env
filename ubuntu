@@ -1,3 +1,14 @@
+# install
+
+apt upgrade
+apt update
+add-apt-repository ppa:graphics-drivers/ppa
+apt install nvidia-390
+update-initramfs -k all -u
+bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+update-initramfs -u
+
 # touchpad
 
 sudo modprobe psmouse
