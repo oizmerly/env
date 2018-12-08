@@ -13,10 +13,11 @@ update-initramfs -u
 sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install tlp tlp-rdw
+# thinkpad power
 sudo apt-get install tp-smapi-dkms acpi-call-dkms
 
 # packages
-apt install htop build-essential tmux zsh 
+apt install htop curl build-essential tmux zsh git 
 
 # touchpad
 
