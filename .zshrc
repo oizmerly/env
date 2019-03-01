@@ -1,3 +1,5 @@
+if [ "$TMUX" = "" ]; then tmux; fi
+
 export ZSH=/Users/oizmerly/.oh-my-zsh
 export TERM=screen-256color
 
