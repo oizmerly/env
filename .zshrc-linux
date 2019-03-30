@@ -1,0 +1,24 @@
+if [ "$TMUX" = "" ]; then tmux; fi
+
+export ZSH="/home/al/.oh-my-zsh"
+export TERM=screen-256color
+
+export PATH=$PATH:~/bin:~/go/bin
+
+# theme
+ZSH_THEME=powerlevel10k/powerlevel10k
+POWERLEVEL9K_MODE=nerdfont-complete
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
+plugins=(git zsh-syntax-highlighting vi-mode zsh-history-substring-search zsh-autosuggestions virtualenv docker kubectl)
+
+# hide user@host
+export DEFAULT_USER=al
+
+source $ZSH/oh-my-zsh.sh
+
+alias mc='mc -x'
+alias vim=nvim
+
+# keybindings
+bindkey "^R" history-incremental-search-backward
