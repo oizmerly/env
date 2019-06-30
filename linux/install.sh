@@ -15,4 +15,14 @@ sudo apt-get install tlp tlp-rdw
 # thinkpad power
 sudo apt-get install tp-smapi-dkms acpi-call-dkms
 
+sudo apt install -y neovim mc zsh tmux
+
+# zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+# vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
