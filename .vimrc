@@ -15,6 +15,7 @@ set t_vb=
 set mouse=a
 set cmdheight=1
 set backspace=2
+set noshowmode
 
 " UI theme
 set number
@@ -79,7 +80,6 @@ filetype plugin indent on    " required
 " lightline
 set laststatus=2
 let g:lightline = {
-  \   'colorscheme': 'Dracula',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
@@ -133,3 +133,5 @@ highlight ColorColumn ctermbg=236 guibg=#363636
 
 " Disable fancy concealing of attribute quotes.
 set conceallevel=0
+
+let g:session_autoload = 'no'
