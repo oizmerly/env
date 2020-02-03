@@ -230,3 +230,52 @@ export BUILD_HOME=~/s/nanolabs-io/build/docker
 export DEFAULT_USER=oleg
 alias vim=nvim
 EOL
+
+mkdir -p ~/.config/alacritty
+cat > ~/.tmux.conf <<EOL
+colors:
+  # Default colors
+  primary:
+    background: '0x1e282d'
+    foreground: '0xc4c7d1'
+
+  # Normal colors
+  normal:
+    black:   '0x666666'
+    red:     '0xeb606b'
+    green:   '0xc3e88d'
+    yellow:  '0xf7eb95'
+    blue:    '0x80cbc4'
+    magenta: '0xff2f90'
+    cyan:    '0xaeddff'
+    white:   '0xffffff'
+
+  # Bright colors
+  bright:
+    black:   '0xff262b'
+    red:     '0xeb606b'
+    green:   '0xc3e88d'
+    yellow:  '0xf7eb95'
+    blue:    '0x7dc6bf'
+    magenta: '0x6c71c4'
+    cyan:    '0x35434d'
+    white:   '0xffffff'
+
+font:
+  size: 15
+
+  normal:
+    family: Consolas NF
+    style: Bold
+  
+  bold:
+    family: Consolas NF
+    style: Bold
+
+  italic:
+    family: Consolas NF
+    style: Italic
+
+  bold_italic:
+    family: Consolas NF
+EOL
