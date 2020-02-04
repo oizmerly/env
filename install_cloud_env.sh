@@ -21,7 +21,7 @@ bind -n S-Left previous-window
 
 # split panes using | and -
 bind c new-window -c "#{pane_current_path}"
-bind \ split-window -h -c "#{pane_current_path}"
+bind \\ split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 unbind '"'
 unbind %
@@ -37,12 +37,14 @@ bind -n End send-key C-e
 bind -n Home send-key C-a
 
 # swap panes
-unbind {
-bind { swap-pane -D
-unbind }
-bind } swap-pane -U
+unbind '{'
+bind '{' swap-pane -D
+unbind '}'
+bind '}' swap-pane -U
 
 # swap windows
+unbind C-S-Left
+unbind C-S-Right
 bind-key -n C-S-Left swap-window -t -1
 bind-key -n C-S-Right swap-window -t +1
 
