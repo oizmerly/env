@@ -234,50 +234,73 @@ alias vim=nvim
 EOL
 
 mkdir -p ~/.config/alacritty
-cat > ~/.tmux.conf <<EOL
+cat > ~/.config/alacritty/alacritty.yml
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 2
+    y: 2
+  dynamic_padding: false
+  decorations: none
+  startup_mode: Maximized
+
+scrolling:
+  history: 10000
+  #multiplier: 3
+  #faux_multiplier: 3
+  #auto_scroll: true
+
+custom_cursor_colors: true
+# hide_cursor_when_typing: true
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+dynamic_title: true
+
+key_bindings:
+  - { key: W, mods: Command,     action: None             }
+  - { key: N, mods: Control|Alt, action: SpawnNewInstance }
+  - { key: F, mods: Control|Alt, action: ToggleFullscreen }
+
 colors:
-  # Default colors
   primary:
-    background: '0x1e282d'
-    foreground: '0xc4c7d1'
-
-  # Normal colors
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
+  cursor:
+    text: '0x2E3440'
+    cursor: '0xD8DEE9'
   normal:
-    black:   '0x666666'
-    red:     '0xeb606b'
-    green:   '0xc3e88d'
-    yellow:  '0xf7eb95'
-    blue:    '0x80cbc4'
-    magenta: '0xff2f90'
-    cyan:    '0xaeddff'
-    white:   '0xffffff'
-
-  # Bright colors
+    black: '0x3B4252'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x88C0D0'
+    white: '0xE5E9F0'
   bright:
-    black:   '0xff262b'
-    red:     '0xeb606b'
-    green:   '0xc3e88d'
-    yellow:  '0xf7eb95'
-    blue:    '0x7dc6bf'
-    magenta: '0x6c71c4'
-    cyan:    '0x35434d'
-    white:   '0xffffff'
+    black: '0x4C566A'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x8FBCBB'
+    white: '0xECEFF4'
 
 font:
   size: 15
-
   normal:
     family: Consolas NF
     style: Bold
-  
   bold:
     family: Consolas NF
     style: Bold
-
   italic:
     family: Consolas NF
     style: Italic
-
   bold_italic:
     family: Consolas NF
-EOL
