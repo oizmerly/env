@@ -209,30 +209,83 @@ EOL
 git clone https://github.com/wbthomason/packer.nvim ~/.config/nvim/pack/packer/start/packer.nvim
 mkdir -p ~/.config/nvim
 cat > ~/.config/nvim/init.lua <<EOL
-vim.o.termguicolors = true
-vim.o.number = true
-vim.o.wildmenu = true
-vim.o.showcmd = true
-vim.o.hlsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.incsearch = true
+-- UI
 vim.o.ruler = true
-vim.o.cmdheight = 1
-vim.o.backspace = 2
 vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.cursorline = true
-vim.o.t_Co=256
+vim.o.colorcolumn='80,120'
+vim.o.ignorecase = true
+
+-- tabs
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+
+-- shared clipboard
+vim.opt.clipboard = 'unnamedplus,unnamed'
+
+-- spellcheck
+vim.opt.spelllang = {'en_us'}
+vim.opt.spell = true
 
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'Mofiqul/dracula.nvim'
+    use 'wbthomason/packer.nvim'
+
+    -- theme
+    use 'Mofiqul/dracula.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
+    use {
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
 end)
 
 -- theme
 vim.o.background = 'dark'
 vim.cmd [[colorscheme dracula]]
-vim.o.colorcolumn='80,120'
+require'lualine'.setup {
+    options = {
+      icons_enabled = true,
+      theme = 'auto',
+      component_separators = { left = '', right = ''},
+      section_separators = { left = '', right = ''},
+      disabled_filetypes = {},
+      always_divide_middle = true,
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'branch', 'diff', 'diagnostics'},
+      lualine_c = {'filename'},
+      lualine_x = {'encoding', 'fileformat', 'filetype'},
+      lualine_y = {'progress'},
+      lualine_z = {'location'}
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {'filename'},
+      lualine_x = {'location'},
+      lualine_y = {},
+      lualine_z = {}
+    },
+    tabline = {},
+    extensions = {}
+}
+
+-- keys bindings
+local function map_key(kind, lhs, rhs, opts)
+    vim.api.nvim_set_keymap(kind, lhs, rhs, opts)
+end
+local silentnoremap = {noremap = true, silent = true}
+
+-- fix home/end in tmux
+map_key('n', '<c-a>', '<Home>', silentnoremap)
+map_key('n', '<c-e>', '<End>', silentnoremap)
 EOL
