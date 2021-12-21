@@ -234,6 +234,25 @@ vim.opt.spell = true
 local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim'
+    use 'vim-scripts/tComment'
+    use 'MattesGroeger/vim-bookmarks'
+    use 'nvim-treesitter/nvim-treesitter'
+
+    use 'terrortylor/nvim-comment'
+    require('nvim_comment').setup()
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = function() require'nvim-tree'.setup {} end
+    }
+    require'nvim-tree'.setup()
+
+    use { 'ibhagwan/fzf-lua',
+        requires = { 'kyazdani42/nvim-web-devicons' }
+    }
 
     -- theme
     use 'Mofiqul/dracula.nvim'
@@ -246,6 +265,16 @@ require('packer').startup(function()
         requires = {'kyazdani42/nvim-web-devicons'}
     }
 end)
+
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = 'maintained',
+    ignore_install = {  },
+    highlight = {
+        enable = true,
+        disable = {  },
+        additional_vim_regex_highlighting = false,
+    },
+}
 
 -- theme
 vim.o.background = 'dark'
@@ -288,4 +317,8 @@ local silentnoremap = {noremap = true, silent = true}
 -- fix home/end in tmux
 map_key('n', '<c-a>', '<Home>', silentnoremap)
 map_key('n', '<c-e>', '<End>', silentnoremap)
+
+map_key('n', '<A-,>', ':BufferPrevious<CR>', silentnoremap)
+map_key('n', '<A-.>', ':BufferNext<CR>', silentnoremap)
+-- map_key('n', '<c-s-e>', ':NvimTreeToggle<CR>', silentnoremap)
 EOL
