@@ -237,7 +237,11 @@ require('packer').startup(function()
     use 'vim-scripts/tComment'
     use 'MattesGroeger/vim-bookmarks'
     use 'nvim-treesitter/nvim-treesitter'
-
+    use 'nvim-treesitter/completion-treesitter'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/vim-vsnip'
+    
     use 'terrortylor/nvim-comment'
     require('nvim_comment').setup()
 
@@ -272,9 +276,78 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         disable = {  },
-        additional_vim_regex_highlighting = false,
+        -- additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = true,
+    },
+    indent = { enable = true },
+    incremental_selection = { enable = true },
+}
+
+vim.g.completion_auto_change_source = true
+vim.g.completion_chain_complete_list = {
+    default = {
+        default = {
+            { complete_items = {'lsp', 'snippets'} },
+        },
+        string = {
+            { mode = 'file' },
+        },
     },
 }
+--require'lspconfig'.rust_analyzer.setup{on_attach=require'completion-treesitter'.on_attach}
+local cmp = require("cmp")
+cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+})
+
+cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- -- Setup lspconfig.
+  -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  --   capabilities = capabilities
+  -- }
 
 -- theme
 vim.o.background = 'dark'
