@@ -1,0 +1,79 @@
+{
+    "agent": {
+        "default_profile": "ask",
+        "enabled": true,
+        "version": "2",
+        "button": true,
+        "default_width": 1700,
+        "dock": "right",
+        "default_model": {
+            "provider": "copilot_chat",
+            "model": "gpt-4o",
+            "type": "thinking"
+        },
+        "editor_model": {
+            "provider": "copilot_chat",
+            "model": "gpt-4o"
+        }
+    },
+    "show_edit_predictions": true,
+    "edit_predictions": {
+      "mode": "eager"
+    },
+    "features": {
+      "edit_prediction_provider": "copilot"
+    },
+    "ssh_connections": [
+        {
+            "host": "coder.devbox.dev",
+            "projects": [
+                {
+                    "paths": ["~/splunk/splcore/main"]
+                },
+                {
+                    "paths": ["~/splunk/splcore/main-aux"]
+                }
+            ]
+        },
+        {
+            "host": "coder.devbox.dev",
+            "projects": []
+        }
+    ],
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Dracula"
+    },
+    "ui_font_family": "JetBrains Mono",
+    "ui_font_size": 16,
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_size": 16.5,
+    "buffer_line_height": { "custom": 1.4 },
+    "wrap_guides": [80, 100, 120],
+    "format_on_save": "off",
+    "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true
+    },
+    "git": {
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+    "tab_size": 4,
+    "languages": {
+        "Markdown": {
+            "soft_wrap": "preferred_line_length",
+            "preferred_line_length": 100,
+            "show_wrap_guides": true,
+            "wrap_guides": [],
+            "show_edit_predictions": true
+        }
+    }
+}
