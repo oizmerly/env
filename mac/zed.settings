@@ -7,13 +7,8 @@
         "default_width": 1700,
         "dock": "right",
         "default_model": {
-            "provider": "copilot_chat",
-            "model": "gpt-4o",
-            "type": "thinking"
         },
         "editor_model": {
-            "provider": "copilot_chat",
-            "model": "gpt-4o"
         }
     },
     "show_edit_predictions": true,
@@ -24,21 +19,6 @@
       "edit_prediction_provider": "copilot"
     },
     "ssh_connections": [
-        {
-            "host": "coder.devbox.dev",
-            "projects": [
-                {
-                    "paths": ["~/splunk/splcore/main"]
-                },
-                {
-                    "paths": ["~/splunk/splcore/main-aux"]
-                }
-            ]
-        },
-        {
-            "host": "coder.devbox.dev",
-            "projects": []
-        }
     ],
     "telemetry": {
         "diagnostics": false,
